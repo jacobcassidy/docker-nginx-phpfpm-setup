@@ -21,7 +21,7 @@ For all features to work, you must do a one-time setup of the following:
 2. Rename the cloned directory from "docker-nginx-phpfpm-setup" to your project name.
 3. Rename the `.env-example` file to `.env`.
 4. Update the `.env` file with the database password and port number, as well as the local domain your project will use.
-5. In the `/localhost-network/certs` directory you created in the __First Time Setup__ instructions above, create SSL certs for the HTTPS protocol using the command: `mkcert yourdomain.localhost`. Make sure you replace "yourdomain.localhost" with the local domain name you specified in your `.env` file.
+5. In the `/localhost-network/certs` directory you created in the __First Time Setup__ instructions above, create the SSL certs needed for the HTTPS protocol using the command: `mkcert yourdomain.localhost`. Make sure you replace "yourdomain.localhost" with the local domain name you specified in your `.env` file.
 6. Rename the created certs from `yourdomain.localhost-key.pem` to `yourdomain.localhost.key` and `yourdomain.localhost.pem` to `yourdomain.localhost.crt`
 7. Open the [Docker Desktop](https://www.docker.com/products/docker-desktop/) app so the Docker engine is on.
 8. Build the docker container with: `docker compose up -d` (run this command in the `/docker` directory). This will create your server and add the `/storage/mysql` directory in your docker directory.
