@@ -1,0 +1,19 @@
+services:
+  web:
+    image: nginx:latest
+    volumes:
+      - ../public:/var/www/html
+      - ./nginx:/etc/nginx/conf.d
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+    links:
+      - php-fpm
+  php-fpm:
+    image: php:fpm
+    volumes:
+      - ../public:/var/www/html
+
+networks:
+  default:
+    name: localhost-network
+    external: true
