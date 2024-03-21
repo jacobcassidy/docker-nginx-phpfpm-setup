@@ -1,17 +1,28 @@
 services:
-  web:
-    image: nginx:latest
+  php-fpm:
+    build: .
+    restart: always
     volumes:
-      - ../public:/var/www/html
+      - ../:/var/www/
+    depends_on:
+      - db
+  nginx:
+    image: nginx:latest
+    restart: always
+    volumes:
+      - ../:/var/www/
       - ./nginx:/etc/nginx/conf.d
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
-    links:
-      - php-fpm
-  php-fpm:
-    image: php:fpm
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     volumes:
-      - ../public:/var/www/html
+      - ./storage/mysql:/var/lib/mysql
+    ports:
+      - ${DB_PORT}:3306
 
 networks:
   default:
