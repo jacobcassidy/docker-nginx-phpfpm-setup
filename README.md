@@ -1,6 +1,6 @@
 # Docker NGINX & PHP-FPM Setup
 
-This repository contains the files needed to quickly get up and running with a local PHP development Docker container. The container uses __NGINX & PHP-FPM__ for the server, __MySQL__ for the database, __local volumes__ for editing the files and database, and installs __Composer__ remotely at `/usr/local/share/composer` for running global packages in your Docker container.
+This repository contains the files needed to quickly get up and running with a local PHP development Docker container. The container uses __NGINX & PHP-FPM__ for the server, __MySQL__ for the database, __local volumes__ for live editing of the files and database, and installs __Composer__ remotely at `/usr/local/share/composer` for running global packages in your Docker container.
 
 Included below are one-time setup instructions for creating a __stand-alone NGINX Reverse Proxy Docker network__. This network container will allow you to run multiple containers simultaneously, all using unique local domain names on the standard 80 (HTTP) or 443 (HTTPS) ports.
 
@@ -8,12 +8,12 @@ This removes the need to manage port numbers, gives you clean domains to work fr
 
 ## Other Docker Container Setup Repositories
 
-Depending on what stack you're using and whether you use the [Ray app](https://myray.app/) for debugging, another container may be a better fit:
+Depending on what stack you're using and whether you use the [Ray app](https://myray.app/) for debugging, another setup may be a better fit:
 
-| Without the Global Ray package| With the Global Ray package |
+| Setups without the Global Ray package| Setups with the Global Ray package |
 | - | - |
-| [NGINX, PHP-FPM & MySQL](https://github.com/jacobcassidy/docker-nginx-phpfpm-setup) | [NGINX, PHP-FPM, Ray, & MySQL](https://github.com/jacobcassidy/docker-nginx-phpfpm-setup) |
-| [WordPress & MySQL](https://github.com/jacobcassidy/docker-wordpress-setup) | [WordPress, Ray, & MySQL](https://github.com/jacobcassidy/docker-wordpress-ray-setup) |
+| [NGINX, PHP-FPM & MySQL](https://github.com/jacobcassidy/docker-nginx-phpfpm-setup) | [NGINX, PHP-FPM, MySQL, & Ray](https://github.com/jacobcassidy/docker-nginx-phpfpm-ray-setup) |
+| [WordPress & MySQL](https://github.com/jacobcassidy/docker-wordpress-setup) | [WordPress, MySQL, & Ray](https://github.com/jacobcassidy/docker-wordpress-ray-setup) |
 
 ## Instructions
 
@@ -39,7 +39,7 @@ For all features to work, you must do a one-time setup of the following:
 7. Open the [Docker Desktop](https://www.docker.com/products/docker-desktop/) app so the Docker engine is on.
 8. Build the docker container with: `docker compose up -d` (run this command in the `your-project-name/docker` directory). This will create your server and add the `/storage/mysql` directory in your docker directory.
 9. Replace this README content with your project's README content (you can view the original README [here](https://github.com/jacobcassidy/docker-nginx-phpfpm-setup)).
-10. Remove the cloned "docker-nginx-phpfpm-setup" .git directory with: `rm -rf .git` (run this in your project directory).
+10. Remove the cloned docker-nginx-phpfpm-setup's `.git` directory with: `rm -rf .git` (run this in your project directory).
 11. Initialize a new git repository for your project with: `git init`.
 12. If you will be using a GitHub remote repo, create and connect to it now.
 13. Open your browser to the local domain specified in your `.env` file and check that everything is loading correctly.
