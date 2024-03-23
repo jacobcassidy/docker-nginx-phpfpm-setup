@@ -3,14 +3,15 @@ services:
     build: .
     restart: always
     volumes:
-      - ../:/var/www/
+      - ../:${REMOTE_PATH}
     depends_on:
       - db
+      - nginx
   nginx:
     image: nginx:latest
     restart: always
     volumes:
-      - ../:/var/www/
+      - ../:${REMOTE_PATH}
       - ./nginx:/etc/nginx/conf.d
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
