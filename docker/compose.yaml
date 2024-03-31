@@ -6,6 +6,9 @@ services:
       - ../:${REMOTE_PATH}
     extra_hosts:
       - ${VIRTUAL_HOST}:${PROXY_NETWORK_GATEWAY}
+    networks:
+      - nginx-proxy-network
+      - backend
     depends_on:
       - db
   nginx:
@@ -16,6 +19,8 @@ services:
       - ./nginx:/etc/nginx/conf.d
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
+    networks:
+      - nginx-proxy-network
   db:
     image: mysql:latest
     restart: always
@@ -25,8 +30,10 @@ services:
       - ./storage/mysql:/var/lib/mysql
     ports:
       - ${DB_PORT}:3306
+    networks:
+      - backend
 
 networks:
-  default:
-    name: ${PROXY_NETWORK_NAME}
+  nginx-proxy-network:
     external: true
+  backend:
